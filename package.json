@@ -1,0 +1,19 @@
+{
+  "name": "treehouse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "download": "^4.4.3",
+    "mkdirp": "^0.5.1",
+    "xml2js": "^0.4.15"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
