@@ -3,6 +3,7 @@ var renderer = require("./renderer.js");
 var downloadVideo = require("./download");
 var queryString = require("querystring");
 var url;
+var hd;
 
 function home(request, response){
 	if(request.url === "/"){
@@ -28,8 +29,14 @@ function home(request, response){
 		//Received the url from the form, start the download
 		request.on("data", function(postBody){
 			var query = queryString.parse(postBody.toString());
+			if(query.hd === "hd"){
+				hd = "&hd=yes"; 
+			}
+			else{
+				hd = "";
+			}
 			url = query.url.replace("itpc", "https");
-			downloadVideo.downloadVideo(url);
+			downloadVideo.downloadVideo(url, hd);
 		});
 
 		response.writeHead(200, {"Content-Type": "text/html"});

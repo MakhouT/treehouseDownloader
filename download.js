@@ -4,7 +4,7 @@ var https = require("https");
 var xmlParser = require("xml2js").parseString;
 var mkdirp = require('mkdirp');   
 
-function downloadVideo(source){
+function downloadVideo(source, hd){
 	// Retrieve xml from treehouse
 	https.get(source, function(response){
 		var xml = "";
@@ -23,7 +23,7 @@ function downloadVideo(source){
 
 				//I'm adding all the link
 			   	courseItem.forEach(function(course){
-			   		courseLinks.push(course.enclosure[0].$.url + "&hd=yes");		    	
+			   		courseLinks.push(course.enclosure[0].$.url + hd);  	
 			    });
 
 			   	var moduleNumbering = 0;
