@@ -1,3 +1,7 @@
+#Upcoming features
+1. Progress bar to see the download status
+2. Download a whole track with 1 link
+
 #Treehouse downloader
 This tool will help you download videos from the website www.teamtreehouse.com if you have an active subscription and don't want to use the build in downloader with iTunes.
 The application will also create all the folders for you numbering them so you can see all the video's in the correct order.
