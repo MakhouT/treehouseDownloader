@@ -1,6 +1,6 @@
 "use strict";
 var download = require("download");
-var downloadStatus = require("download");
+var downloadStatus = require("download-status");
 var https = require("https");
 var xmlParser = require("xml2js").parseString;
 var mkdirp = require('mkdirp');   
@@ -54,28 +54,7 @@ function downloadVideo(source, hd){
 
 			   		//Make all the directories and download the video's in the correct directory
 					//mkdirp.sync(directory);
-			   		//new download({mode: "755"}).get(course).rename(courseFileName).dest(directory).run();
-			   		if(courseLinks[0] === course){
-			   			//Do a request to the course
-			   			https.get(courseLinks[0], function(res){
-			   				res.on("data", function(chunk){
-			   					//But you get redirected, so doing a second request to the redirection url
-			   					//Then read the content-length of the headers
-			   					//The content-length is in format of bytes
-			   					// 1 byte = 1024kb
-			   					// 1kb = 1024mb
-			   					// That's why we need to divide by 1048576 = 1024*1024
-			   					// With the toFixed(2) we only show upto 2 decimals 
-			   					https.get(res.headers.location, function(r){
-			   						console.log((r.headers['content-length'] / 1048576).toFixed(2) + "mb");
-			   						new download({mode: "755"}).get(course).rename(courseFileName).dest(directory).run(function(err, files){
-			   							console.log(files[0].toString('utf-8'));
-			   						});
-			   					});
-			   				});
-			   			});
-			   		}
-			   		
+			   		new download({mode: "755"}).get(course).rename(courseFileName).dest(directory).use(downloadStatus({renderThrottle: 5000})).run();			   		
 			   	});		   	
 			});
 		});

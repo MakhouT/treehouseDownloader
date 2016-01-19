@@ -5,12 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js" 
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "download": "^4.4.3",
+    "download-status": "^2.2.1",
     "mkdirp": "^0.5.1",
     "xml2js": "^0.4.15"
   },
