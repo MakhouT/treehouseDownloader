@@ -53,8 +53,8 @@ function downloadVideo(source, hd){
 			   		var directory = courseName + "\/" + moduleNumbering + ". " + courseModule;
 
 			   		//Make all the directories and download the video's in the correct directory
-					//mkdirp.sync(directory);
-			   		new download({mode: "755"}).get(course).rename(courseFileName).dest(directory).use(downloadStatus({renderThrottle: 5000})).run();			   		
+					mkdirp.sync(directory);
+			   		new download({mode: "755"}).get(course).rename(courseFileName).dest(directory).use(downloadStatus()).run();			   		
 			   	});		   	
 			});
 		});
