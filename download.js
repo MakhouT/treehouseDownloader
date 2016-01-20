@@ -37,19 +37,24 @@ function downloadVideo(source, hd){
 			   		var courseName = courseDetails[0];
 			   		var courseModule = courseDetails[1];
 			   		var courseVideo = courseDetails[2];
-			   	
+			   		var courseFileNameNoNumbering = (courseDetails[3].substring(0, courseDetails[3].indexOf("?"))).replace("download", courseVideo); //The filename missing the filenumbering
+
 			   		if(courseModule !== previousModuleFolder){
 			   			//Starting a new module
 			   			moduleNumbering++;
 			   			previousModuleFolder = courseModule;
 			   			courseFileNameNumbering = 1;
 			   		}
-			   		
+
+			   		//Add leading zero if numbers are from 1-9
+			   		if(courseFileNameNumbering < 10){
+			   			courseFileNameNumbering = "0" + courseFileNameNumbering;
+			   		}
+
 			   		//Form the name of the file with numbering so you can see the video's in the correct order
 			   		//Also removing the token and options from the originel filename
-			   		var courseFileName = courseFileNameNumbering + ". " + (courseDetails[3].substring(0, courseDetails[3].indexOf("?"))).replace("download", courseVideo); 
+			   		var courseFileName = courseFileNameNumbering + ". " + courseFileNameNoNumbering;
 			   		courseFileNameNumbering++;
-			   	
 			   		var directory = courseName + "\/" + moduleNumbering + ". " + courseModule;
 
 			   		//Make all the directories and download the video's in the correct directory
