@@ -1,4 +1,5 @@
 "use strict";
+var xray = require("x-ray");
 var renderer = require("./renderer.js");
 var downloadVideo = require("./download");
 var queryString = require("querystring");
@@ -29,14 +30,40 @@ function home(request, response){
 		//Received the url from the form, start the download
 		request.on("data", function(postBody){
 			var query = queryString.parse(postBody.toString());
-			if(query.hd === "hd"){
+			var protocol = query.url.substring(0,7);
+			var hdOption = query.hd;
+
+			//If HD option is enabled we add that option to the final url
+			if(hdOption === "hd"){
 				hd = "&hd=yes"; 
 			}
 			else{
 				hd = "";
 			}
-			url = query.url.replace("itpc", "https");
-			downloadVideo.downloadVideo(url, hd);
+			
+			//if the protocol is itpc then we're downloading a single track
+			//else we're downloading a whole track
+			if(protocol === "itpc://"){
+				//url = query.url.replace("itpc", "https");
+				//downloadVideo.downloadVideo(url, hd);
+			}
+			else{
+				var token = query.url.substring(query.url.indexOf("?")+1);
+				var trackUrl = query.url.substring(0, token);
+				//console.log(track);
+				console.log(token);
+
+				var x = xray();
+				x(trackUrl, "#track-steps li.card.course a.card-title", ["@href"])(function(err, data){
+					data.forEach(function(course){
+						console.log(course + ".rss?feed_token=");
+					});
+				});
+
+			}
+			
+			//url = query.url.replace("itpc", "https");
+			//downloadVideo.downloadVideo(url, hd);
 		});
 
 		response.writeHead(200, {"Content-Type": "text/html"});
