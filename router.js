@@ -49,14 +49,12 @@ function home(request, response){
 			}
 			else{
 				var token = query.url.substring(query.url.indexOf("?")+1);
-				var trackUrl = query.url.substring(0, token);
-				//console.log(track);
-				console.log(token);
+				var trackUrl = query.url.substring(0, query.url.indexOf("?"));	
 
 				var x = xray();
 				x(trackUrl, "#track-steps li.card.course a.card-title", ["@href"])(function(err, data){
 					data.forEach(function(course){
-						console.log(course + ".rss?feed_token=");
+						console.log(course + ".rss?feed_token=" + token);
 					});
 				});
 
