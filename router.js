@@ -54,14 +54,14 @@ function home(request, response){
 				var x = xray();
 				x(trackUrl, "#track-steps li.card.course a.card-title", ["@href"])(function(err, data){
 					data.forEach(function(course){
-						console.log(course + ".rss?feed_token=" + token);
+						var courseFromTrack = course + ".rss?feed_token=" + token;
+						downloadVideo.downloadVideo(courseFromTrack, hd);
 					});
 				});
 
 			}
 			
-			//url = query.url.replace("itpc", "https");
-			//downloadVideo.downloadVideo(url, hd);
+			
 		});
 
 		response.writeHead(200, {"Content-Type": "text/html"});
