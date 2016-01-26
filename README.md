@@ -17,13 +17,19 @@ The application will also create all the folders for you numbering them so you c
 6. In a browser browse to http://127.0.0.1:8080/
 <img src="README.image/1.png">
 
-7. Copy the course download link to download from iTunes and insert it in the input of the application, this link should start with 'itpc' and should end with you token corresponding to your account
-for example
+7.1 Copy the course download link to download from iTunes and insert it in the input of the application, this link should start with 'itpc' and should end with you token corresponding to your account. This will download 1 course.
+
 ```
     itpc://teamtreehouse.com/library/build-an-interactive-story-app.rss?feed_token=xxxxxxxx-b326-4ada-8ce4-ca456d6axxxx
 ```
-8. Press download and have some patience until the video's are downloaded.
 
+7.2 To download a full track paste in the url of the track and manually add "?tokencode", so it would look something like this
+```
+    https://teamtreehouse.com/library/adobe-illustrator-for-web-design?xxxxxxxx-b326-4ada-8ce4-ca456d6axxxx
+```
+Note that downloading a full track is still instable.
+
+8. Press download and have some patience until the video's are downloaded.
 
 <br/>
 It should create a folder for each chapter of the course and each video inside of it should be numbered so you can watch them in the correct order.
