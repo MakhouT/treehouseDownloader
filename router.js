@@ -44,8 +44,8 @@ function home(request, response){
 			//if the protocol is itpc then we're downloading a single track
 			//else we're downloading a whole track
 			if(protocol === "itpc://"){
-				//url = query.url.replace("itpc", "https");
-				//downloadVideo.downloadVideo(url, hd);
+				url = query.url.replace("itpc", "https");
+				downloadVideo.downloadVideo(url, hd);
 			}
 			else{
 				var token = query.url.substring(query.url.indexOf("?")+1);
