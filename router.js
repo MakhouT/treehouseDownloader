@@ -58,10 +58,7 @@ function home(request, response){
 						downloadVideo.downloadVideo(courseFromTrack, hd);
 					});
 				});
-
 			}
-			
-			
 		});
 
 		response.writeHead(200, {"Content-Type": "text/html"});
