@@ -1,6 +1,5 @@
-#Upcoming features
-1. Progress bar to see the download status
-2. Download a whole track with 1 link
+#Not active any more
+Since the upgrade of treehouse it is not working any more - since I don't have a treehouse subscription any more - I am not able to work on this. However I am happy to pick this up in the future when I do get myself a treehouse subscription again or if someone lends me theirs for a week or so.
 
 #Treehouse downloader
 This tool will help you download videos from the website www.teamtreehouse.com if you have an active subscription and don't want to use the build in downloader with iTunes.
